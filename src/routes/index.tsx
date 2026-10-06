@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
+import { toast } from "sonner";
 import { ArrowUpRight, Check, MoveUpRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import envelope from "@/assets/envelope.jpg";
@@ -22,6 +23,9 @@ function Index() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitted(true);
+    toast.success(`Thanks${name.trim() ? `, ${name.trim().split(" ")[0]}` : ""}! Your demo message is in.`, {
+      description: "This is a demo — nothing has been sent or saved.",
+    });
   }
   return (
     <div className="hello-page">
